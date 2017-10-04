@@ -72,7 +72,7 @@ public class DTTextField: UITextField {
         didSet{
             guard let color = placeholderColor else { return }
             attributedPlaceholder = NSAttributedString(string: placeholderFinal,
-                                                       attributes: [NSForegroundColorAttributeName:color])
+                                                       attributes: [NSAttributedStringKey.foregroundColor:color])
         }
     }
     
@@ -149,7 +149,7 @@ public class DTTextField: UITextField {
                 return
             }
             attributedPlaceholder = NSAttributedString(string: placeholderFinal,
-                                                       attributes: [NSForegroundColorAttributeName:color])
+                                                       attributes: [NSAttributedStringKey.foregroundColor:color])
         }
     }
     
@@ -281,8 +281,8 @@ public class DTTextField: UITextField {
     }
     
     fileprivate func insetRectForBounds(rect:CGRect) -> CGRect {
-        
-        guard !lblFloatPlaceholder.text!.isEmptyStr else { return insetRectForEmptyBounds(rect: rect) }
+        let placeholderText = lblFloatPlaceholder.text ?? ""
+        guard !placeholderText.isEmptyStr else { return insetRectForEmptyBounds(rect: rect) }
         
         if floatingDisplayStatus == .never {
             return insetRectForEmptyBounds(rect: rect)

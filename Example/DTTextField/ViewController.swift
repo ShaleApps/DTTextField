@@ -74,12 +74,12 @@ class ViewController: UIViewController {
 // MARK: User Define Methods
 extension ViewController{
     
-    func keyboardWillShow(notification:Notification) {
+    @objc func keyboardWillShow(notification:Notification) {
         guard let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight.height, 0)
     }
     
-    func keyboardWillHide(notification:Notification) {
+    @objc func keyboardWillHide(notification:Notification) {
         scrollView.contentInset = .zero
     }
     
